@@ -1,0 +1,13 @@
+name: Deploy on prod
+on: [push]
+jobs:
+  Deploy-On-Prod:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+    - name: rsync over ssh
+      run: rsync -rv -e 'ssh -p 22345' ./htdocs/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_DIR }}/
