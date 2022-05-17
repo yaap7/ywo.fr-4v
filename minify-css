@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# this tool strip too much content so the special effect of "diagonal image" is removed
+# yui-compressor assets/css/main.css -o htdocs/css/main.css
+# so I just used an online tool
+echo "not done"
